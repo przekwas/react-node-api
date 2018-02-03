@@ -7,6 +7,7 @@ class SingleChirp extends Component {
         this.state = {
             objects: []
         }
+        this.deleteChirp = this.deleteChirp.bind(this);
     }
 
     componentDidMount() {
@@ -17,6 +18,15 @@ class SingleChirp extends Component {
         })
             .then(response => response.json())
             .then(object => this.setState({ objects: object }))
+    }
+
+    deleteChirp(event) {
+        let url = '/chirps/' + this.props.match.params.id;
+        fetch(url, {
+            method: 'DELETE',
+            headers: new Headers({ 'Content-Type': 'application/json' })
+        })
+        .then(this.props.history.push('/'))
     }
 
     render() {
@@ -41,8 +51,8 @@ class SingleChirp extends Component {
                             <p className="card-text p-1 m-1">{this.state.objects.text}</p>
                             <h6 className="card-subtitle p-1 m-1 text-muted font-weight-light">- {this.props.match.params.id}</h6>
                             <Link className="btn btn-primary my-1" to="/">Go Back to All Chirps</Link>
-                            <Link className="btn btn-secondary my-1" to={"/chirps/"+this.props.match.params.id+"/edit"}>Edit Chirp</Link>
-                            <Link className="btn btn-danger my-1" to="/">Delete Chirp</Link>
+                            <Link className="btn btn-secondary my-1" to={"/chirps/" + this.props.match.params.id + "/edit"}>Edit Chirp</Link>
+                            <button onClick={this.deleteChirp} className="btn btn-danger my-1">Delete Chirp</button>
                         </div>
                     </div>
                 </div>

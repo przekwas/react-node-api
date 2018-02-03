@@ -20,13 +20,13 @@ router.post('/', (req, res) => {
 router.put('/:id/edit', (req, res) => {
     let id = req.params.id;
     chirpStore.UpdateChirp(id, req.body);
-    res.status(200);
+    res.sendStatus(200);
 });
 
 router.delete('/:id', (req, res) => {
     let id = req.params.id;
     chirpStore.DeleteChirp(id);
-    res.status(200);
+    res.sendStatus(200);
 });
 
 export default router;
