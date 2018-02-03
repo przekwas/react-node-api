@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import AddChirp from './AddChirp';
 import ChirpList from './ChirpList';
+import SingleChirp from './SingleChirp';
 
 class Navigation extends Component {
 
@@ -11,6 +12,7 @@ class Navigation extends Component {
                 <Fragment>
                     <Switch>
                         <Route exact path="/" component={ChirpList} />
+                        <Route exact path="/chirps/:id" component={SingleChirp} />
                     </Switch>
                 </Fragment>
             </Router>

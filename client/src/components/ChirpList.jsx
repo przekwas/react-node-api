@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
+import 'isomorphic-fetch';
 import AddChirp from './AddChirp';
 import Chirp from './Chirp';
+
 
 class ChirpList extends Component {
     constructor(props) {
