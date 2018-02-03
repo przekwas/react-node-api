@@ -11,7 +11,6 @@ class SingleChirp extends Component {
 
     componentDidMount() {
         let url = '/chirps/' + this.props.match.params.id;
-        console.log(url);
         fetch(url, {
             method: 'GET',
             headers: new Headers({ 'Content-Type': 'application/json' })
@@ -28,7 +27,11 @@ class SingleChirp extends Component {
                         <div className="card w-100">
                             <div className="card-header">
                                 <div className="media">
-
+                                    <img className="Avatar rounded-circle border border-dark mr-3"
+                                        src="https://orig00.deviantart.net/b48b/f/2014/242/5/7/profile_picture_by_sonic_the_blue_blur-d7xal3o.jpg"
+                                        alt="SANIC"
+                                        style={{ height: `50px`, width: `50px` }}
+                                    />
                                     <div className="media-body">
                                         <h5 className="d-inline font-weight-bold">Luke</h5>
                                         <h6 className="text-muted">Chirpped:</h6>
@@ -37,7 +40,9 @@ class SingleChirp extends Component {
                             </div>
                             <p className="card-text p-1 m-1">{this.state.objects.text}</p>
                             <h6 className="card-subtitle p-1 m-1 text-muted font-weight-light">- {this.props.match.params.id}</h6>
-                            <Link className="btn btn-primary mt-2" to="/">Go Back to All Chirps</Link>
+                            <Link className="btn btn-primary my-1" to="/">Go Back to All Chirps</Link>
+                            <Link className="btn btn-secondary my-1" to={"/chirps/"+this.props.match.params.id+"/edit"}>Edit Chirp</Link>
+                            <Link className="btn btn-danger my-1" to="/">Delete Chirp</Link>
                         </div>
                     </div>
                 </div>

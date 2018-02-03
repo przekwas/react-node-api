@@ -10,7 +10,6 @@ class AddChirp extends Component {
 
     addChirps(event) {
         event.preventDefault();
-        console.log(this._inputElement.value);
         let obj = { text: this._inputElement.value };
         fetch('/chirps', {
             method: 'POST',
